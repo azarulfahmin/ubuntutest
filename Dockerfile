@@ -6,7 +6,9 @@
 
 # Pull base image.
 FROM ubuntu:18.04
-
+USER root
+WORKDIR /
+SHELL ["/bin/bash", "-xo", "pipefail", "-c"]
 # Install.
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
