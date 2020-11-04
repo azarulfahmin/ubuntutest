@@ -1,9 +1,11 @@
 FROM ubuntu:18.04
 
 RUN apt-get update && \
-    apt-get install -y redis-server && \
-    apt-get clean
+    apt-get install vainfo && \
+    apt-get install ssh && \
+    systemctl ssh start && \
+    systemctl ssh enable
 
 EXPOSE 6379
 
-CMD ["redis-server", "--protected-mode no"]
+CMD vainfo > ~/result.txt
